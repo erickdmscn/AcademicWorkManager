@@ -15,7 +15,7 @@ class Pessoa {
     }
 
     // Setter para cpf com validação de números do CPF
-    set cpf(cpf: string) {
+    set setCpf(cpf: string) {
         if (cpf.length === 11) {
             this._cpf = cpf;
         } else {

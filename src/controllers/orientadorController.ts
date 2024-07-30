@@ -17,10 +17,10 @@ class OrientadorController {
     // Atualizar um Orientador existente por CPF
     atualizarOrientador(cpf: string, nome: string, email: string, titulo: string): Orientador | null {
         try {
-            const orientador = this.orientadores.find(o => o.cpf === cpf);
+            const orientador = this.orientadores.find(o => o.getCpf === cpf);
             if (orientador) {
-                orientador.nome = nome;
-                orientador.email = email;
+                orientador.setNome = nome;
+                orientador.setEmail = email;
                 orientador.titulo = titulo;
                 return orientador;
             } else {
@@ -41,7 +41,7 @@ class OrientadorController {
                 return false;
             }
 
-            const index = this.orientadores.findIndex(o => o.cpf === cpf);
+            const index = this.orientadores.findIndex(o => o.getCpf === cpf);
             if (index !== -1) {
                 this.orientadores.splice(index, 1);
                 return true;

@@ -6,11 +6,11 @@ class Autor extends Pessoa {
         this._curso = curso;
     }
 
-    get curso(): Curso {
+    get getCurso(): Curso {
         return this._curso;
     }
 
-    set curso(curso: Curso) {
+    set setCurso(curso: Curso) {
         this._curso = curso;
     }
 }
