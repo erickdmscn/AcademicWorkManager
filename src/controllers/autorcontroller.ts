@@ -1,4 +1,4 @@
-class AutorController {
+export class autorController {
     private autores: Autor[] = [];
     private trabalhosAcademicosController: TrabalhoAcademicoController;
 
@@ -9,6 +9,11 @@ class AutorController {
     // Inserir um novo Autor
     inserirAutor(cpf: string, nome: string, email: string, curso: Curso): Autor | null {
         try {
+            if (this.consultarAutor(cpf)) {
+                console.warn('Autor com este CPF já existe:', cpf);
+                return null;
+            }
+
             const novoAutor = new Autor(cpf, nome, email, curso);
             this.autores.push(novoAutor);
             return novoAutor;
@@ -19,13 +24,13 @@ class AutorController {
     }
 
     // Atualizar um Autor existente por CPF
-    atualizarAutor(cpf: string, nome: string, email: string, curso: Curso): Autor | null {
+    atualizarAutor(cpf: string, nome?: string, email?: string, curso?: Curso): Autor | null {
         try {
-            const autor = this.autores.find(a => a.getCpf === cpf);
+            const autor = this.consultarAutor(cpf);
             if (autor) {
-                autor.setNome = nome;
-                autor.setCpf = cpf;
-                autor.setCurso = curso;
+                if (nome) autor.setNome = nome;
+                if (email) autor.setEmail = email;
+                if (curso) autor.setCurso = curso;
                 return autor;
             } else {
                 console.warn('Autor não encontrado para o CPF:', cpf);
@@ -58,6 +63,11 @@ class AutorController {
             console.error('Erro ao remover autor:', error);
             return false;
         }
+    }
+
+    // Consultar um Autor por CPF
+    consultarAutor(cpf: string): Autor | null {
+        return this.autores.find(a => a.getCpf === cpf) || null;
     }
 
     // Método para obter todos os Autores (para verificação)

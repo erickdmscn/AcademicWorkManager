@@ -10,7 +10,7 @@ class Pessoa {
     }
 
     
-    get cpf(): string {
+    get getCpf(): string {
         return this._cpf;
     }
 
@@ -24,12 +24,12 @@ class Pessoa {
     }
 
     // Getter para nome
-    get nome(): string {
+    get getNome(): string {
         return this._nome;
     }
 
     // Setter para nome com validação para o campo não ficar vazio
-    set nome(nome: string) {
+    set setNome(nome: string) {
         if (nome.length > 0) {
             this._nome = nome;
         } else {
@@ -38,12 +38,12 @@ class Pessoa {
     }
 
     // Getter para email
-    get email(): string {
+    get getEmail(): string {
         return this._email;
     }
 
     // Setter para email com validação para incluir @
-    set email(email: string) {
+    set setEmail(email: string) {
         if (email.includes("@")) {
             this._email = email;
         } else {
